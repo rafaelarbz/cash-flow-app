@@ -1,6 +1,6 @@
-interface Carapmelap {}
+import React from "react";
 
-const Carapmelap: React.FC<Carapmelap> = () => {
+const Carapmelap: React.FC = () => {
     return(
         <>
         Carapmelap

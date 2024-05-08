@@ -1,9 +1,21 @@
-interface Header {}
+import React from "react";
+import { Menubar } from "primereact/menubar";
 
-const Header: React.FC<Header> = () => {
+const Header: React.FC = () => {
+    const menuItems = [
+      {
+        label: 'Início',
+        icon: 'pi pi-home'
+      },
+      {
+          label: 'Novo Lançamento',
+          icon: 'pi pi-dollar'
+      }
+    ];
+
     return (
-        <header style={{ padding: '1rem', background: '#f8f9fa' }}>
-          <h1>Meu Aplicativo</h1>
+        <header className="flex w-full">
+          <Menubar model={menuItems} />
         </header>
     );
 };

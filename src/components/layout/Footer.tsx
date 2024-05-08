@@ -1,15 +1,12 @@
-import { Button } from "primereact/button";
+import React from "react";
 
-interface Footer {}
-
-const Footer: React.FC<Footer> = () => {
+const Footer: React.FC = () => {
 
     const currentYear = new Date().getFullYear();
 
     return (
-        <footer style={{ padding: '1rem', background: '#f8f9fa' }}>
+        <footer className="flex w-full">
           <p>© {currentYear} Cash Flow</p>
-          <Button label="Voltar ao topo" />
         </footer>
     );
 };

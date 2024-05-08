@@ -1,6 +1,6 @@
-interface Pong {}
+import React from "react";
 
-const Pong: React.FC<Pong> = () => {
+const Pong: React.FC = () => {
     return(
         <>
         Pong
