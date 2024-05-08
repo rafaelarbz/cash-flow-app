@@ -1,29 +1,23 @@
 import { PrimeReactProvider } from "primereact/api";
-import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from "react-router-dom";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Layout from "./views/Layout";
 import Pong from "./views/Pong";
 import Carapmelap from "./views/Carapmelap";
 import CashFlowRegister from "./views/CashFlowRegister";
 
-interface App {}
-
-const App: React.FC<App> = () => {
-
-  const router = createBrowserRouter(
-    createRoutesFromElements(
-      <Route path="/">
-        <Layout>
-          <Route index element={<CashFlowRegister />}/>
-          <Route path="ping" element={<Pong />}/>
-          <Route path="carapmelap" element={<Carapmelap />}/>
-        </Layout>
-      </Route>
-    )
-  );
+const App: React.FC = () => {
 
   return (
     <PrimeReactProvider>
-      <RouterProvider router={router} />
+      <Router>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<CashFlowRegister />}/>
+            <Route path="ping" element={<Pong />}/>
+            <Route path="carapmelap" element={<Carapmelap />}/>
+          </Route>
+        </Routes>
+      </Router>
     </PrimeReactProvider>
   );
 };

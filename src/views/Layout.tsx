@@ -1,16 +1,13 @@
 import React from "react";
 import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
+import { Outlet } from "react-router-dom";
 
-interface Layout {
-    children: React.ReactNode;
-}
-
-const Layout: React.FC<Layout> = ({children}) => {
+const Layout: React.FC = () => {
     return (
         <>
             <Header/>
-            <main>{children}</main>
+            <main><Outlet /></main>
             <Footer/>
         </>
     );
