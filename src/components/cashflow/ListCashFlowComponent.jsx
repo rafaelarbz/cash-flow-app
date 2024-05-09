@@ -1,6 +1,7 @@
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { Divider } from 'primereact/divider';
+import { fields } from '../../utils/CashFlowUtil';
 
 export default function ListCashFlowComponent({releases, totals}) {
 
@@ -13,13 +14,13 @@ export default function ListCashFlowComponent({releases, totals}) {
                 <Column field="amount" header="Valor" style={{ width: '20%' }}></Column>
             </DataTable>
             <div className="justify-content-left mt-4">
-                Total de Entradas: {totals['Entrada']['Total'] || "R$ 0,00"}
+                Total de Entradas: {totals[fields.type.options.inflow]['total'] || "R$ 0,00"}
                 <Divider />
-                Total de Saídas: {totals['Saída']['Total'] || "R$ 0,00"}
+                Total de Saídas: {totals[fields.type.options.outflow]['total'] || "R$ 0,00"}
                 <Divider />
-                Total de Entradas - Cartão: {totals['Entrada']['Cartão'] || "R$ 0,00"}
+                Total de Entradas - Cartão: {totals[fields.type.options.inflow][fields.payment.options.card] || "R$ 0,00"}
                 <Divider />
-                Total de Entradas - Dinheiro: {totals['Entrada']['Dinheiro'] || "R$ 0,00"}
+                Total de Entradas - Dinheiro: {totals[fields.type.options.inflow][fields.payment.options.cash] || "R$ 0,00"}
             </div>
         </div>
     );

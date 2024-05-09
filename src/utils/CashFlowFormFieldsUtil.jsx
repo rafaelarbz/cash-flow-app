@@ -1,37 +1,39 @@
+import { fields } from "./CashFlowUtil";
+
 export const formFields = {
     selectFields: {
         type: {
-            label: 'Tipo de Lançamento *',
+            label: `${fields.type.title} *`,
             placeholder: 'Selecione',
             icon: 'pi pi-flag',
             options: [
-                { value: 'inflow', label: 'Entrada', icon: 'pi pi-arrow-down-left'},
-                { value: 'outflow', label: 'Saída', icon: 'pi pi-arrow-up-right'}
+                { value: 'inflow', label: `${fields.type.options.inflow}`, icon: 'pi pi-arrow-down-left'},
+                { value: 'outflow', label: `${fields.type.options.outflow}`, icon: 'pi pi-arrow-up-right'}
             ]
         },
         payment: {
-            label: 'Forma de Pagamento *',
+            label: `${fields.payment.title} *`,
             placeholder: 'Selecione',
             icon: 'pi pi-wallet',
             options: [
-                { value: 'cash', label: 'Dinheiro', icon: 'pi pi-money-bill'},
-                { value: 'card', label: 'Cartão', icon: 'pi pi-credit-card'},
+                { value: 'cash', label: `${fields.payment.options.cash}`, icon: 'pi pi-money-bill'},
+                { value: 'card', label: `${fields.payment.options.card}`, icon: 'pi pi-credit-card'},
             ]
         },
     },
     inputTextFields: {
         enterpriseName: {
-            label: 'Empreendimento *',
+            label: `${fields.enterpriseName.title} *`,
             icon: 'pi pi-shop'
         },
         description: {
-            label: 'Descrição',
+            label: `${fields.description.title}`,
             icon: 'pi pi-info-circle'
         }
     },
     inputCurrencyFields: {
         releaseAmount: {
-            label: 'Valor *',
+            label: `${fields.amount.title} *`,
             icon: 'pi pi-receipt',
             currency: 'BRL',
             locale: 'pt-BR'
@@ -39,7 +41,7 @@ export const formFields = {
     },
     dateFields: {
         releaseDate: {
-            label: 'Data *',
+            label: `${fields.date.title} *`,
             icon: 'pi pi-calendar',
             format: 'dd/mm/yy'
         }

@@ -2,11 +2,13 @@ import { useEffect, useState } from "react";
 import BasicCardComponent from "../components/general/BasicCardComponent";
 import FormNewCashFlowComponent from "../components/cashflow/FormNewCashFlowComponent";
 import ListCashFlowComponent from "../components/cashflow/ListCashFlowComponent";
+import { fields, totalsStructure } from "../utils/CashFlowUtil";
+import { formatCurrency } from "../utils/DataFormatterUtil";
 
 export default function CashFlowView() {
     const [title, setTitle] = useState("Lançamentos");
     const [releases, setReleases] = useState([]);
-    const [totals, setTotals] = useState({Entrada: {}, Saída: {} });
+    const [totals, setTotals] = useState(totalsStructure);
 
     const handleTitleChange = (enterpriseName) => {
         if (enterpriseName) {
@@ -25,34 +27,25 @@ export default function CashFlowView() {
     }, [releases]);
 
     const sumTotals = () => {
-        const newTotals = { Entrada: { }, Saída: { } };
-    
+        let newTotals = JSON.parse(JSON.stringify(totalsStructure)); // Clona a estrutura para evitar mutação direta
+    debugger
         releases.forEach((release) => {
           const numericValue = parseFloat(
             release.amount.replace(/[^\d,]/g, '').replace(',', '.')
           );
     
-          if (!newTotals[release.type][release.payment]) {
-            newTotals[release.type][release.payment] = 0;
-          }
-    
           newTotals[release.type][release.payment] += numericValue;
-    
-          newTotals[release.type].total += numericValue;
-    
-          newTotals[release.type][release.payment] = formatCurrency.format(newTotals[release.type][release.payment]);
+          newTotals[release.type]['total'] += numericValue;
         });
     
-        newTotals['Entrada']['Total'] = formatCurrency.format(newTotals['Entrada']['Total'] || 0);
-        newTotals['Saída']['Total'] = formatCurrency.format(newTotals['Saída']['Total'] || 0);
+        Object.keys(newTotals).forEach(type => {
+          Object.keys(newTotals[type]).forEach(key => {
+            newTotals[type][key] = formatCurrency.format(newTotals[type][key]);
+          });
+        });
     
         setTotals(newTotals);
     };
-
-    const formatCurrency = new Intl.NumberFormat('pt-BR', {
-        style: 'currency',
-        currency: 'BRL'
-    });
 
     return (
         <div className="flex justify-content-center gap-2 mr-8 ml-8">

@@ -1,11 +1,13 @@
 import { useEffect, useRef, useState } from "react";
-import { formFields } from "../../utils/NewCashFlowFormFieldsUtil";
+import { formFields } from "../../utils/CashFlowFormFieldsUtil";
 import { Dropdown } from 'primereact/dropdown';
 import { Calendar } from 'primereact/calendar';
 import { InputNumber } from 'primereact/inputnumber';
 import { InputText } from "primereact/inputtext";
 import { Button } from 'primereact/button';
 import { Toast } from 'primereact/toast';
+import { fields } from "../../utils/CashFlowUtil";
+import { formatCurrency, formatDate } from "../../utils/DataFormatterUtil";
 
 export default function FormNewCashFlowComponent({onTitleChange, onReleaseChange}) {
     //STATES
@@ -32,16 +34,6 @@ export default function FormNewCashFlowComponent({onTitleChange, onReleaseChange
     useEffect(() => {
         onTitleChange(enterpriseName);
     }, [enterpriseName]);
-
-    const typeMap = {
-        inflow: 'Entrada',
-        outflow: 'Saída'
-    };
-
-    const paymentMap = {
-        cash: 'Dinheiro',
-        card: 'Cartão'
-    };
     
     const clearForm = () => {
         setType(null);
@@ -89,26 +81,14 @@ export default function FormNewCashFlowComponent({onTitleChange, onReleaseChange
         const updatedReleases = releases.filter(item => item.id !== id);
         setReleases(updatedReleases);
     };
-    
-    const formatDate = (date) => {
-        const day = String(date.getDate()).padStart(2, '0');
-        const month = String(date.getMonth() + 1).padStart(2, '0');
-        const year = String(date.getFullYear()).slice(-2);
-        return `${day}/${month}/${year}`;
-    };
 
     const getType = (value) => {
-        return typeMap[value] || null;
+        return fields.type.options[value] || null;
     };
 
     const getPayment = (value) => {
-        return paymentMap[value] || null;
+        return fields.payment.options[value] || null;
     };
-
-    const formatCurrency = new Intl.NumberFormat('pt-BR', {
-        style: 'currency',
-        currency: 'BRL'
-    });
 
     const showAlert = (title, message, type = 'contrast', life = 3000) => {
         toast.current.show({ severity: type, summary: title, detail: message, life: life });
