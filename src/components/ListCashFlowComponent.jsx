@@ -13,13 +13,13 @@ export default function ListCashFlowComponent({releases, totals}) {
                 <Column field="amount" header="Valor" style={{ width: '20%' }}></Column>
             </DataTable>
             <div className="justify-content-left mt-4">
-                Total de Entradas: {totals['Entrada']['Total']}
+                Total de Entradas: {totals['Entrada']['Total'] || "R$ 0,00"}
                 <Divider />
-                Total de Saídas: {totals['Saída']['Total']}
+                Total de Saídas: {totals['Saída']['Total'] || "R$ 0,00"}
                 <Divider />
-                Total de Entradas - Cartão: {totals['Entrada']['Cartão']}
+                Total de Entradas - Cartão: {totals['Entrada']['Cartão'] || "R$ 0,00"}
                 <Divider />
-                Total de Entradas - Dinheiro: {totals['Entrada']['Dinheiro']}
+                Total de Entradas - Dinheiro: {totals['Entrada']['Dinheiro'] || "R$ 0,00"}
             </div>
         </div>
     );
