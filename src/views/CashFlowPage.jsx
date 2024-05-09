@@ -8,8 +8,12 @@ export default function CashFlowPage() {
     const [releases, setReleases] = useState([]);
     const [totals, setTotals] = useState({Entrada: {}, Saída: {} });
 
-    const handleTitleChange = (newTitle) => {
-        setTitle("Lançamentos de " + newTitle);
+    const handleTitleChange = (enterpriseName) => {
+        if (enterpriseName) {
+            setTitle("Lançamentos de " + enterpriseName);
+        } else {
+            setTitle("Lançamentos");
+        }
     };
 
     const handleReleasesChange = (releases) => {
