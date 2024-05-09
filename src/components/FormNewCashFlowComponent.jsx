@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { formFields } from "../utils/NewCashFlowFormFields";
+import { formFields } from "../utils/NewCashFlowFormFieldsUtil";
 import { Dropdown } from 'primereact/dropdown';
 import { Calendar } from 'primereact/calendar';
 import { InputNumber } from 'primereact/inputnumber';

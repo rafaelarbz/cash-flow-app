@@ -1,4 +1,4 @@
-export default function ErrorPage() {
+export default function ErrorView() {
     return (
         <>Error</>
     );

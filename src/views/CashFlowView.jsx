@@ -3,7 +3,7 @@ import BasicCardComponent from "../components/BasicCardComponent";
 import FormNewCashFlowComponent from "../components/FormNewCashFlowComponent";
 import ListCashFlowComponent from "../components/ListCashFlowComponent";
 
-export default function CashFlowPage() {
+export default function CashFlowView() {
     const [title, setTitle] = useState("Lançamentos");
     const [releases, setReleases] = useState([]);
     const [totals, setTotals] = useState({Entrada: {}, Saída: {} });
