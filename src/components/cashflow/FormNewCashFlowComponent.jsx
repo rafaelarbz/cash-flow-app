@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { formFields } from "../utils/NewCashFlowFormFieldsUtil";
+import { formFields } from "../../utils/NewCashFlowFormFieldsUtil";
 import { Dropdown } from 'primereact/dropdown';
 import { Calendar } from 'primereact/calendar';
 import { InputNumber } from 'primereact/inputnumber';
@@ -210,7 +210,7 @@ export default function FormNewCashFlowComponent({onTitleChange, onReleaseChange
                             onChange={(e) => setDescription(e.target.value)}
                         />
                     </div>
-                    <div className="flex justify-content-center gap-5">
+                    <div className="flex align-items-center gap-5">
                         <Button label="Cancelar" severity="secondary" outlined icon="pi pi-times" size="small" onClick={(e) => clearForm()}/>
                         <Button label="Salvar" severity="secondary" icon="pi pi-check" size="small" onClick={(e) => saveRelease()}/>
                     </div>

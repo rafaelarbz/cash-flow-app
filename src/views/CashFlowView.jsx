@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import BasicCardComponent from "../components/BasicCardComponent";
-import FormNewCashFlowComponent from "../components/FormNewCashFlowComponent";
-import ListCashFlowComponent from "../components/ListCashFlowComponent";
+import BasicCardComponent from "../components/general/BasicCardComponent";
+import FormNewCashFlowComponent from "../components/cashflow/FormNewCashFlowComponent";
+import ListCashFlowComponent from "../components/cashflow/ListCashFlowComponent";
 
 export default function CashFlowView() {
     const [title, setTitle] = useState("Lançamentos");
