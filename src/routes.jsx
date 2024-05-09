@@ -8,7 +8,7 @@ export const routes = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />} errorElement={<ErrorPage />}>
       <Route index element={<HomePage />} />
-      <Route path="/new" element={<CashFlowPage />} />
+      <Route path="new" element={<CashFlowPage />} />
     </Route>
   )
 );
