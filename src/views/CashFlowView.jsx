@@ -96,8 +96,13 @@ export default function CashFlowView() {
     };
 
     return (
-        <div className="md:flex lg:flex xl:flex gap-2 mr-8 ml-8">
-            <div className="field md:col-4 lg:col-4 xl:col-4">
+        <div className="
+            sm:mt-5
+            md:flex md:mr-5 md:ml-5
+            lg:flex lg:mr-5 lg:ml-5
+            xl:flex xl:mr-5 lg:ml-5
+            gap-2">
+            <div className="md:col-4 lg:col-4 xl:col-4">
                 <BasicCardComponent title="Novo Lançamento" content={(
                     <FormNewCashFlowComponent 
                         onTitleChange={handleTitleChange}
@@ -106,7 +111,7 @@ export default function CashFlowView() {
                     />
                 )} />
             </div>
-            <div className="field col">
+            <div className="md:col-8 lg:col-8 xl:col-8">
                 <BasicCardComponent title={titleCardList}  content={(
                     <ListCashFlowComponent 
                         releases={releases} 

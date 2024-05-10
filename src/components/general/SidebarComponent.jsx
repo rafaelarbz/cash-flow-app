@@ -17,6 +17,7 @@ export default function SidebarComponent() {
   return (
     <>
       <Button 
+        className="fixed"
         severity="secondary"
         icon="pi pi-bars" 
         rounded text raised 
