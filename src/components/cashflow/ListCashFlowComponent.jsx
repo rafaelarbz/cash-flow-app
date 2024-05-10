@@ -10,7 +10,7 @@ export default function ListCashFlowComponent({releases, totals, onRemoveRelease
     const [visibleRemoveDialog, setVisibleRemoveDialog] = useState(false);
     const [releaseToRemove, setReleaseToRemove] = useState(null);
 
-    const actionBodyTemplate = (rowData) => {
+    const bodyRemoveTemplate = (rowData) => {
         return <Button 
                     onClick={() => removeRelease(rowData)}
                     icon="pi pi-times" 
@@ -47,11 +47,12 @@ export default function ListCashFlowComponent({releases, totals, onRemoveRelease
                 visible={visibleRemoveDialog}
             />
             <DataTable className="mt-1" value={releases} paginator rows={5} rowsPerPageOptions={[5, 10, 15, 20, 25, 30]} removableSort>
-                <Column field="date" header="Data" style={{ width: '20%' }} sortable></Column>
+                <Column field="date" header="Data" style={{ width: '10%' }} sortable></Column>
                 <Column field="type" header="Tipo" style={{ width: '20%' }}></Column>
+                <Column field="description" header="Descrição" style={{ width: '30%' }}></Column>
                 <Column field="payment" header="Pagamento" style={{ width: '20%' }}></Column>
-                <Column field="amount" header="Valor" style={{ width: '20%' }}></Column>
-                <Column bodyStyle={{ textAlign: 'center', overflow: 'visible' }} body={actionBodyTemplate} />
+                <Column field="amount" header="Valor" style={{ width: '15%' }}></Column>
+                <Column style={{ width: '10%' }} body={bodyRemoveTemplate} />
             </DataTable>
             <div className="justify-content-left mt-4">
                 Total de Entradas: {totals[fields.type.options.inflow]['total'] || "R$ 0,00"}
