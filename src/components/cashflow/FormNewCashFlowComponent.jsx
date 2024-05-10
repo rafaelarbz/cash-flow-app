@@ -9,7 +9,7 @@ import { Toast } from 'primereact/toast';
 import { fields } from "../../utils/CashFlowUtil";
 import { formatCurrency, formatDate } from "../../utils/DataFormatterUtil";
 
-export default function FormNewCashFlowComponent({onTitleChange, onReleaseChange}) {
+export default function FormNewCashFlowComponent({onTitleChange, onReleaseChange, selectedId}) {
     //STATES
     const toast = useRef(null);
     const [releases, setReleases] = useState([]);
@@ -30,6 +30,12 @@ export default function FormNewCashFlowComponent({onTitleChange, onReleaseChange
     useEffect(() => {
         onReleaseChange(releases);
     }, [releases]);
+
+    useEffect(() => {
+        if (selectedId) {
+            removeRelease(selectedId);
+        }
+    }, [selectedId])
 
     useEffect(() => {
         onTitleChange(enterpriseName);
@@ -114,7 +120,7 @@ export default function FormNewCashFlowComponent({onTitleChange, onReleaseChange
                         </small>
                     </div>
                     <div className="flex justify-content-center mt-6 mb-1">
-                        <Button icon="pi pi-chevron-right" outlined rounded severity="secondary" onClick={(e) => saveEnterpriseName()}/>
+                        <Button icon="pi pi-chevron-right" text raised rounded severity="secondary" onClick={saveEnterpriseName}/>
                     </div>
                 </div>
             }
@@ -190,9 +196,9 @@ export default function FormNewCashFlowComponent({onTitleChange, onReleaseChange
                             onChange={(e) => setDescription(e.target.value)}
                         />
                     </div>
-                    <div className="flex align-items-center gap-5">
-                        <Button label="Cancelar" severity="secondary" outlined icon="pi pi-times" size="small" onClick={(e) => clearForm()}/>
-                        <Button label="Salvar" severity="secondary" icon="pi pi-check" size="small" onClick={(e) => saveRelease()}/>
+                    <div className="flex justify-content-center gap-5">
+                        <Button text raised label="Cancelar" severity="danger" icon="pi pi-times" size="small" onClick={clearForm}/>
+                        <Button text raised label="Adicionar" severity="success" icon="pi pi-check" size="small" onClick={saveRelease}/>
                     </div>
                 </div>
             }

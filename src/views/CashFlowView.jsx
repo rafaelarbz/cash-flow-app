@@ -9,6 +9,7 @@ export default function CashFlowView() {
     const [title, setTitle] = useState("Lançamentos");
     const [releases, setReleases] = useState([]);
     const [totals, setTotals] = useState(totalsStructure);
+    const [releaseIdToRemove, setReleaseIdToRemove] = useState(null);
 
     const handleTitleChange = (enterpriseName) => {
         if (enterpriseName) {
@@ -22,13 +23,17 @@ export default function CashFlowView() {
         setReleases(releases);
     };
 
+    const handleRemoveRelease = (id) => {
+        setReleaseIdToRemove(id);
+    };
+
     useEffect(() => {
         sumTotals();
     }, [releases]);
 
     const sumTotals = () => {
         let newTotals = JSON.parse(JSON.stringify(totalsStructure)); // Clona a estrutura para evitar mutação direta
-    debugger
+    
         releases.forEach((release) => {
           const numericValue = parseFloat(
             release.amount.replace(/[^\d,]/g, '').replace(',', '.')
@@ -50,16 +55,21 @@ export default function CashFlowView() {
     return (
         <div className="flex justify-content-center gap-2 mr-8 ml-8">
             <div className="field col-4">
-                <BasicCardComponent title="Adicionar" content={(
+                <BasicCardComponent title="Novo Lançamento" content={(
                     <FormNewCashFlowComponent 
                         onTitleChange={handleTitleChange}
                         onReleaseChange={handleReleasesChange}
+                        selectedId={releaseIdToRemove}
                     />
                 )} />
             </div>
             <div className="field col">
                 <BasicCardComponent title={title}  content={(
-                    <ListCashFlowComponent releases={releases} totals={totals} />
+                    <ListCashFlowComponent 
+                        releases={releases} 
+                        totals={totals} 
+                        onRemoveRelease={handleRemoveRelease}
+                    />
                 )} />
             </div>
         </div>
