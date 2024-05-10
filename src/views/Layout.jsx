@@ -4,9 +4,9 @@ import SidebarComponent from "../components/general/SidebarComponent";
 export default function Layout() {
 
     return (
-        <div className="container-fluid">
+        <div className="flex align-content-center">
             <SidebarComponent />
-            <main className="w-full">
+            <main className="w-full mt-5">
                 <Outlet />
             </main>
         </div>

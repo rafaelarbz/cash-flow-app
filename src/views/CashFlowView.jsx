@@ -96,8 +96,8 @@ export default function CashFlowView() {
     };
 
     return (
-        <div className="flex justify-content-center gap-2 mr-8 ml-8">
-            <div className="field col-4">
+        <div className="md:flex lg:flex xl:flex gap-2 mr-8 ml-8">
+            <div className="field md:col-4 lg:col-4 xl:col-4">
                 <BasicCardComponent title="Novo Lançamento" content={(
                     <FormNewCashFlowComponent 
                         onTitleChange={handleTitleChange}
