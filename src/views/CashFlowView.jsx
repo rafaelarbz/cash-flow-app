@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import BasicCardComponent from "../components/general/BasicCardComponent";
 import FormNewCashFlowComponent from "../components/cashflow/FormNewCashFlowComponent";
 import ListCashFlowComponent from "../components/cashflow/ListCashFlowComponent";
-import { fields, totalsStructure } from "../utils/CashFlowUtil";
+import { totalsStructure } from "../utils/CashFlowUtil";
 import { formatCurrency } from "../utils/DataFormatterUtil";
 
 export default function CashFlowView() {
