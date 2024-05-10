@@ -2,8 +2,11 @@ import { useEffect, useState } from "react";
 import BasicCardComponent from "../components/general/BasicCardComponent";
 import FormNewCashFlowComponent from "../components/cashflow/FormNewCashFlowComponent";
 import ListCashFlowComponent from "../components/cashflow/ListCashFlowComponent";
-import { totalsStructure } from "../utils/CashFlowUtil";
-import { formatCurrency } from "../utils/DataFormatterUtil";
+import { fields, releaseColumnsToExport, totalsInfoLabel, totalsStructure } from "../utils/CashFlowUtil";
+import { formatColumnsToExport, formatCurrency, formatFileName } from "../utils/DataFormatterUtil";
+import ButtonExportPdfComponent from "../components/general/ButtonExportPdfComponent";
+import { jsPDF } from "jspdf";
+import { autoTable } from "jspdf-autotable";
 
 export default function CashFlowView() {
     const [title, setTitle] = useState("Lançamentos");
@@ -26,6 +29,42 @@ export default function CashFlowView() {
     const handleRemoveRelease = (id) => {
         setReleaseIdToRemove(id);
     };
+
+    const exportPdf = () => {
+        if (releases.length > 0) {
+            const columnsDetails = formatColumnsToExport(releaseColumnsToExport);
+            const fileName = formatFileName(title);
+
+            let doc = new jsPDF();
+
+            doc.setFontSize(12);
+            
+            doc.text(title, 10, 10);
+            
+            doc.autoTable(columnsDetails, releases);
+            doc.autoTable([{
+                dataKey: 'total',
+                title: 'Totais'
+            }], [{
+                total: totalsInfoLabel.inflow.total+totals[fields.type.options.inflow]['total']
+            }, {
+                total: totalsInfoLabel.outflow.total+totals[fields.type.options.outflow]['total']
+            }, {
+                total: totalsInfoLabel.inflow.card+totals[fields.type.options.inflow][fields.payment.options.card]
+            }, {
+                total: totalsInfoLabel.inflow.cash+totals[fields.type.options.inflow][fields.payment.options.cash]
+            }]);
+
+            doc.save(`${fileName}.pdf`);
+        }
+    };
+
+    const titleCardList = (
+        <div className="flex flex-wrap gap-2 align-items-center justify-content-between">
+            <h4 className="m-0">{title}</h4>
+            <ButtonExportPdfComponent  exportPdf={exportPdf} />
+        </div>
+    );
 
     useEffect(() => {
         sumTotals();
@@ -64,7 +103,7 @@ export default function CashFlowView() {
                 )} />
             </div>
             <div className="field col">
-                <BasicCardComponent title={title}  content={(
+                <BasicCardComponent title={titleCardList}  content={(
                     <ListCashFlowComponent 
                         releases={releases} 
                         totals={totals} 

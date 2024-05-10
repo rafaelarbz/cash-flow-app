@@ -39,3 +39,24 @@ export const totalsStructure = {
         [fields.payment.options.cash]: 0
     }
 }
+
+export const releaseColumnsToExport = [
+    { field: 'date', header: fields.date.title },
+    { field: 'type', header: fields.type.title },
+    { field: 'description', header: fields.description.title },
+    { field: 'payment', header: fields.payment.title },
+    { field: 'amount', header: fields.amount.title }
+];
+
+export const totalsInfoLabel = {
+    inflow: {
+        total: 'Total de Entradas: ',
+        card: 'Total de Entradas - Cartão: ',
+        cash: 'Total de Entradas - Dinheiro: '
+    },
+    outflow: {
+        total: 'Total de Saídas: ',
+        card: 'Total de Saídas - Cartão: ',
+        cash: 'Total de Saídas - Dinheiro: '
+    }
+};

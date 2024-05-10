@@ -9,3 +9,17 @@ export const formatDate = (date) => {
     const year = String(date.getFullYear()).slice(-2);
     return `${day}/${month}/${year}`;
 };
+
+export const formatFileName = (name) => {
+    return name.normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/\s+/g, '_')
+    .toLowerCase();
+};
+
+export const formatColumnsToExport =  (values) => {
+    return values.map((col) => ({
+        title: col.header, 
+        dataKey: col.field 
+    }));
+};

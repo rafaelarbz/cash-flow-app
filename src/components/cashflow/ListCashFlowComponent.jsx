@@ -1,7 +1,7 @@
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { Divider } from 'primereact/divider';
-import { fields } from '../../utils/CashFlowUtil';
+import { fields, totalsInfoLabel } from '../../utils/CashFlowUtil';
 import { Button } from 'primereact/button';
 import ConfirmDialogComponent from '../general/ConfirmDialogComponent';
 import { useState } from 'react';
@@ -55,13 +55,13 @@ export default function ListCashFlowComponent({releases, totals, onRemoveRelease
                 <Column style={{ width: '10%' }} body={bodyRemoveTemplate} />
             </DataTable>
             <div className="justify-content-left mt-4">
-                Total de Entradas: {totals[fields.type.options.inflow]['total'] || "R$ 0,00"}
+                {totalsInfoLabel.inflow.total} {totals[fields.type.options.inflow]['total'] || "R$ 0,00"}
                 <Divider />
-                Total de Saídas: {totals[fields.type.options.outflow]['total'] || "R$ 0,00"}
+                {totalsInfoLabel.outflow.total} {totals[fields.type.options.outflow]['total'] || "R$ 0,00"}
                 <Divider />
-                Total de Entradas - Cartão: {totals[fields.type.options.inflow][fields.payment.options.card] || "R$ 0,00"}
+                {totalsInfoLabel.inflow.card} {totals[fields.type.options.inflow][fields.payment.options.card] || "R$ 0,00"}
                 <Divider />
-                Total de Entradas - Dinheiro: {totals[fields.type.options.inflow][fields.payment.options.cash] || "R$ 0,00"}
+                {totalsInfoLabel.inflow.cash} {totals[fields.type.options.inflow][fields.payment.options.cash] || "R$ 0,00"}
             </div>
         </div>
     );
