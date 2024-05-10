@@ -7,8 +7,10 @@ import { formatColumnsToExport, formatCurrency, formatFileName } from "../utils/
 import ButtonExportPdfComponent from "../components/general/ButtonExportPdfComponent";
 import { jsPDF } from "jspdf";
 import { autoTable } from "jspdf-autotable";
+import { useToast } from "../contexts/ToastContext";
 
 export default function CashFlowView() {
+    const { showToast } = useToast();
     const [title, setTitle] = useState("Lançamentos");
     const [releases, setReleases] = useState([]);
     const [totals, setTotals] = useState(totalsStructure);
@@ -56,6 +58,8 @@ export default function CashFlowView() {
             }]);
 
             doc.save(`${fileName}.pdf`);
+        } else {
+            showToast('error', 'Oops', 'Não há lançamentos para exportar.');
         }
     };
 

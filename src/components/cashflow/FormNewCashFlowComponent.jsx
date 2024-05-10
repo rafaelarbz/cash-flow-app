@@ -5,13 +5,13 @@ import { Calendar } from 'primereact/calendar';
 import { InputNumber } from 'primereact/inputnumber';
 import { InputText } from "primereact/inputtext";
 import { Button } from 'primereact/button';
-import { Toast } from 'primereact/toast';
+import { useToast } from '../../contexts/ToastContext';
 import { fields } from "../../utils/CashFlowUtil";
 import { formatCurrency, formatDate } from "../../utils/DataFormatterUtil";
 
 export default function FormNewCashFlowComponent({onTitleChange, onReleaseChange, selectedId}) {
     //STATES
-    const toast = useRef(null);
+    const { showToast } = useToast();
     const [releases, setReleases] = useState([]);
     const [type, setType] = useState(null);
     const [payment, setPayment] = useState(null);
@@ -52,7 +52,7 @@ export default function FormNewCashFlowComponent({onTitleChange, onReleaseChange
     const saveEnterpriseName = () => {
         if (!enterpriseName) {
             setConfirmEnterpriseName(false);
-            showAlert('Atenção', 'Informe o empreendimento.', 'warn');
+            showToast('warn', 'Atenção', 'Informe o empreendimento.');
         } else {
             setConfirmEnterpriseName(true);
         }
@@ -60,7 +60,7 @@ export default function FormNewCashFlowComponent({onTitleChange, onReleaseChange
 
     const saveRelease = () => {
         if (!type || !payment || !date || !amount ) {
-            showAlert('Erro', 'Por favor, preencha todos os campos obrigatórios.', 'error');
+            showToast('error', 'Atenção', 'Por favor, preencha todos os campos obrigatórios.');
             return;
         }
     
@@ -80,7 +80,7 @@ export default function FormNewCashFlowComponent({onTitleChange, onReleaseChange
 
         setReleases([...releases, release]);
         clearForm();
-        showAlert('Sucesso', 'Item adicionado!', 'contrast');
+        showToast('success', 'Sucesso', 'Item adicionado!');
     };
 
     const removeRelease = (id) => {
@@ -96,13 +96,8 @@ export default function FormNewCashFlowComponent({onTitleChange, onReleaseChange
         return fields.payment.options[value] || null;
     };
 
-    const showAlert = (title, message, type = 'contrast', life = 3000) => {
-        toast.current.show({ severity: type, summary: title, detail: message, life: life });
-    };
-
     return (
         <>
-            <Toast ref={toast} />
             {!confirmEnterpriseName && 
                 <div>
                     <div className="field">
