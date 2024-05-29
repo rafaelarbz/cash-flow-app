@@ -100,6 +100,6 @@ export const useFunctionalities = () => {
   return {
     newRealease: t('functionalities.newRealease'),
     listReleases: t('functionalities.listReleases'),
-    listReleasesFromEnterprise: t('functionalities.listReleasesFromEnterprise'),
+    listReleasesFromEnterprise: t('functionalities.listReleasesFromEnterprise')
   };
 };
