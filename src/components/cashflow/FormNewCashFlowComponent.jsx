@@ -1,17 +1,24 @@
-import { useEffect, useRef, useState } from "react";
-import { formFields } from "../../utils/CashFlowFormFieldsUtil";
+import { useEffect, useState } from "react";
+import { useFormFields } from "../../utils/CashFlowFormFieldsUtil";
 import { Dropdown } from 'primereact/dropdown';
 import { Calendar } from 'primereact/calendar';
 import { InputNumber } from 'primereact/inputnumber';
 import { InputText } from "primereact/inputtext";
 import { Button } from 'primereact/button';
 import { useToast } from '../../contexts/ToastContext';
-import { fields } from "../../utils/CashFlowUtil";
+import { useFields } from "../../utils/CashFlowUtil";
 import { formatCurrency, formatDate } from "../../utils/DataFormatterUtil";
+import { useMessage } from "../../utils/MessagesUtil";
+import { useGeneralForm } from "../../utils/GeneralFormUtil";
 
 export default function FormNewCashFlowComponent({onTitleChange, onReleaseChange, selectedId}) {
-    //STATES
     const { showToast } = useToast();
+    const formFields = useFormFields();
+    const fields = useFields();
+    const messages = useMessage();
+    const generalFormLabels = useGeneralForm();
+    
+    //STATES
     const [releases, setReleases] = useState([]);
     const [type, setType] = useState(null);
     const [payment, setPayment] = useState(null);
@@ -52,20 +59,26 @@ export default function FormNewCashFlowComponent({onTitleChange, onReleaseChange
     const saveEnterpriseName = () => {
         if (!enterpriseName) {
             setConfirmEnterpriseName(false);
-            showToast('warn', 'Atenção', 'Informe o empreendimento.');
+            showToast(
+                'warn', 
+                messages.alerts.addEnterprise.title, 
+                messages.alerts.addEnterprise.message);
         } else {
             setConfirmEnterpriseName(true);
         }
     };
 
     const saveRelease = () => {
-        if (!type || !payment || !date || !amount ) {
-            showToast('error', 'Atenção', 'Por favor, preencha todos os campos obrigatórios.');
+        if (!type || !payment || !date || !amount || !description) {
+            showToast(
+                'error', 
+                messages.errors.fieldsRequired.title, 
+                messages.errors.fieldsRequired.message);
             return;
         }
     
-        const formattedDate = date ? formatDate(date) : null;
-        const formattedAmount = amount ? formatCurrency.format(amount) : null;
+        const formattedDate = date ? formatDate(date, fields.locale) : null;
+        const formattedAmount = amount ? formatCurrency(amount, fields.locale, fields.currency.type) : null;
         const formattedType = type ? getType(type) : null;
         const formattedPayment = payment ? getPayment(payment) : null;
 
@@ -80,7 +93,10 @@ export default function FormNewCashFlowComponent({onTitleChange, onReleaseChange
 
         setReleases([...releases, release]);
         clearForm();
-        showToast('success', 'Sucesso', 'Item adicionado!');
+        showToast(
+            'success', 
+            messages.alerts.itemAdded.title, 
+            messages.alerts.itemAdded.message);
     };
 
     const removeRelease = (id) => {
@@ -111,7 +127,7 @@ export default function FormNewCashFlowComponent({onTitleChange, onReleaseChange
                             onChange={(e) => setEnterpriseName(e.target.value)}
                         />    
                         <small id="enterprise-help">
-                           Informe para prosseguir.
+                           {messages.alerts.infoRequired.message}
                         </small>
                     </div>
                     <div className="flex justify-content-center mt-6 mb-1">
@@ -192,8 +208,8 @@ export default function FormNewCashFlowComponent({onTitleChange, onReleaseChange
                         />
                     </div>
                     <div className="flex justify-content-center gap-5">
-                        <Button text raised label="Cancelar" severity="danger" icon="pi pi-times" size="small" onClick={clearForm}/>
-                        <Button text raised label="Adicionar" severity="success" icon="pi pi-check" size="small" onClick={saveRelease}/>
+                        <Button text raised label={generalFormLabels.buttons.cancel} severity="danger" icon="pi pi-times" size="small" onClick={clearForm}/>
+                        <Button text raised label={generalFormLabels.buttons.add} severity="success" icon="pi pi-check" size="small" onClick={saveRelease}/>
                     </div>
                 </div>
             }

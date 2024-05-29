@@ -9,7 +9,7 @@ export default function SidebarComponent() {
 
   const customHeader = (
       <div className="flex align-items-center gap-2">
-          <Avatar image="cash-flow.svg" shape="circle" />
+          <Avatar image="images/cash-flow.svg" shape="circle" />
           <span>Cash Flow</span>
       </div>
   );

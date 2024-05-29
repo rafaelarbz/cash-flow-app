@@ -2,25 +2,33 @@ import { useEffect, useState } from "react";
 import BasicCardComponent from "../components/general/BasicCardComponent";
 import FormNewCashFlowComponent from "../components/cashflow/FormNewCashFlowComponent";
 import ListCashFlowComponent from "../components/cashflow/ListCashFlowComponent";
-import { fields, releaseColumnsToExport, totalsInfoLabel, totalsStructure } from "../utils/CashFlowUtil";
+import { useFields, useFunctionalities, useReleaseColumnsToExport, useTotalsInfoLabel, useTotalsStructure} from "../utils/CashFlowUtil";
 import { formatColumnsToExport, formatCurrency, formatFileName } from "../utils/DataFormatterUtil";
 import ButtonExportPdfComponent from "../components/general/ButtonExportPdfComponent";
 import { jsPDF } from "jspdf";
 import { autoTable } from "jspdf-autotable";
 import { useToast } from "../contexts/ToastContext";
+import { useMessage } from "../utils/MessagesUtil";
 
 export default function CashFlowView() {
     const { showToast } = useToast();
-    const [title, setTitle] = useState("Lançamentos");
+    const fields = useFields();
+    const releaseColumnsToExport = useReleaseColumnsToExport();
+    const totalsInfoLabel = useTotalsInfoLabel();
+    const totalsStructure = useTotalsStructure();
+    const messages = useMessage();
+    const labelFunctionalities = useFunctionalities();
+    
+    const [title, setTitle] = useState(labelFunctionalities.listReleases);
     const [releases, setReleases] = useState([]);
     const [totals, setTotals] = useState(totalsStructure);
     const [releaseIdToRemove, setReleaseIdToRemove] = useState(null);
 
     const handleTitleChange = (enterpriseName) => {
         if (enterpriseName) {
-            setTitle("Lançamentos de " + enterpriseName);
+            setTitle(labelFunctionalities.listReleasesFromEnterprise + enterpriseName);
         } else {
-            setTitle("Lançamentos");
+            setTitle(labelFunctionalities.listReleases);
         }
     };
 
@@ -59,7 +67,10 @@ export default function CashFlowView() {
 
             doc.save(`${fileName}.pdf`);
         } else {
-            showToast('error', 'Oops', 'Não há lançamentos para exportar.');
+            showToast(
+                'error', 
+                messages.errors.noReleasesToExport.title, 
+                messages.errors.noReleasesToExport.message);
         }
     };
 
@@ -88,7 +99,7 @@ export default function CashFlowView() {
     
         Object.keys(newTotals).forEach(type => {
           Object.keys(newTotals[type]).forEach(key => {
-            newTotals[type][key] = formatCurrency.format(newTotals[type][key]);
+            newTotals[type][key] = formatCurrency(newTotals[type][key], fields.locale, fields.currency.type);
           });
         });
     
@@ -103,7 +114,7 @@ export default function CashFlowView() {
             xl:flex xl:mr-5 lg:ml-5
             gap-2">
             <div className="md:col-4 lg:col-4 xl:col-4">
-                <BasicCardComponent title="Novo Lançamento" content={(
+                <BasicCardComponent title={labelFunctionalities.newRealease} content={(
                     <FormNewCashFlowComponent 
                         onTitleChange={handleTitleChange}
                         onReleaseChange={handleReleasesChange}

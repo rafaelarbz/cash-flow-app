@@ -1,7 +1,11 @@
 import { Button } from 'primereact/button';
 import { ConfirmDialog } from 'primereact/confirmdialog';
+import { useGeneralForm } from '../../utils/GeneralFormUtil';
 
-export default function ConfirmDialogComponent({visible, icon="pi pi-question", title="Atenção", message, onConfirm, onReject}) {
+export default function ConfirmDialogComponent({visible, icon="pi pi-question", title="Attention", message, onConfirm, onReject}) {
+    
+    const generalFormLabels = useGeneralForm();
+
     return (
         <ConfirmDialog
             group="headless"
@@ -19,7 +23,7 @@ export default function ConfirmDialogComponent({visible, icon="pi pi-question", 
                     </p>
                     <div className="flex align-items-center gap-2 mt-4" >
                         <Button
-                            label="Confirmar"
+                            label={generalFormLabels.buttons.confirm}
                             text raised
                             severity="success"
                             onClick={() => {
@@ -28,7 +32,7 @@ export default function ConfirmDialogComponent({visible, icon="pi pi-question", 
                             className="w-8rem"
                         ></Button>
                         <Button
-                            label="Cancelar"
+                            label={generalFormLabels.buttons.cancel}
                             text raised
                             severity="danger"
                             onClick={() => {

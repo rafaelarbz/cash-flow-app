@@ -1,0 +1,105 @@
+{
+  "fields": {
+    "locale": "pt-BR",
+    "enterpriseName": {
+      "title": "Empreendimento"
+    },
+    "type": {
+      "title": "Tipo de Lançamento",
+      "options": {
+        "inflow": "Entrada",
+        "outflow": "Saída"
+      }
+    },
+    "payment": {
+      "title": "Forma de Pagamento",
+      "options": {
+        "card": "Cartão",
+        "cash": "Dinheiro"
+      }
+    },
+    "date": {
+      "title": "Data"
+    },
+    "amount": {
+      "title": "Valor"
+    },
+    "description": {
+      "title": "Descrição"
+    },
+    "currency": {
+      "label": "R$",
+      "type": "BRL"
+    },
+    "dateFormat": "dd/mm/yy",
+    "timeFormat": "HH:mm",
+    "inputSelect": {
+      "placeholder": "Selecione"
+    }
+  },
+  "totalsInfoLabel": {
+    "inflow": {
+      "total": "Total de Entradas: ",
+      "card": "Total de Entradas - Cartão: ",
+      "cash": "Total de Entradas - Dinheiro: "
+    },
+    "outflow": {
+      "total": "Total de Saídas: ",
+      "card": "Total de Saídas - Cartão: ",
+      "cash": "Total de Saídas - Dinheiro: "
+    }
+  },
+  "buttons": {
+    "cancel": "Cancelar",
+    "confirm": "Confirmar",
+    "add": "Adicionar",
+    "remove": "Remover",
+    "save": "Salvar",
+    "delete": "Excluir",
+    "back": "Voltar",
+    "submit": "Enviar",
+    "edit": "Editar",
+    "search": "Buscar"
+  },  
+  "functionalities": {
+    "newRealease": "Novo Lançamento",
+    "listReleases": "Lançamentos",
+    "listReleasesFromEnterprise": "Lançamentos de "
+  },
+  "errors": {
+    "noReleasesToExport": {
+      "title": "Oops",
+      "message": "Não há lançamentos para exportar."
+    },
+    "fieldsRequired": {
+      "title": "Atenção",
+      "message": "Por favor, preencha todos os campos obrigatórios."
+    },
+    "general": {
+      "title": "Oops",
+      "message": "Houve um erro."
+    }
+  },
+  "alerts": {
+    "itemAdded": {
+      "title": "Sucesso",
+      "message": "Item adicionado!"
+    },
+    "addEnterprise": {
+      "title": "Atenção",
+      "message": "Informe o empreendimento."
+    },
+    "generalSuccess": {
+      "title": "Sucesso",
+      "message": "Ação realizada com sucesso!"
+    },
+    "infoRequired": {
+      "title": "Atenção",
+      "message": "Informe para prosseguir."
+    },
+    "confirmRemove": {
+      "title": "Atenção",
+      "message": "Deseja remover item?"
+    }
+  }
+}  
