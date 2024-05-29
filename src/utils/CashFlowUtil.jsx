@@ -32,6 +32,14 @@ export const useFields = () => {
     description: {
       title: t('fields.description.title')
     },
+    repeatRelease: {
+      title: t('fields.repeatRelease.title'),
+      description: t('fields.repeatRelease.description')
+    },
+    totalRepeats: {
+      title: t('fields.totalRepeats.title'),
+      description: t('fields.totalRepeats.description')
+    },
     currency: {
       label: t('fields.currency.label'),
       type: t('fields.currency.type')

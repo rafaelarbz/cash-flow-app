@@ -5,6 +5,7 @@ import { Calendar } from 'primereact/calendar';
 import { InputNumber } from 'primereact/inputnumber';
 import { InputText } from "primereact/inputtext";
 import { Button } from 'primereact/button';
+import { Checkbox } from 'primereact/checkbox';
 import { useToast } from '../../contexts/ToastContext';
 import { useFields } from "../../utils/CashFlowUtil";
 import { formatCurrency, formatDate } from "../../utils/DataFormatterUtil";
@@ -27,12 +28,16 @@ export default function FormNewCashFlowComponent({onTitleChange, onReleaseChange
     const [description, setDescription] = useState("");
     const [enterpriseName, setEnterpriseName] = useState("");
     const [confirmEnterpriseName, setConfirmEnterpriseName] = useState(false);
+    const [repeat, setRepeat] = useState(false);
+    const [totalRepeats, setTotalRepeats] = useState(null);
 
     //FORM
     const selectFields = formFields.selectFields;
     const textFields = formFields.inputTextFields;
     const currencyFields = formFields.inputCurrencyFields;
     const dateFields = formFields.dateFields;
+    const numberFields = formFields.inputNumber;
+    const booleanFields = formFields.inputBoolean;
 
     useEffect(() => {
         onReleaseChange(releases);
@@ -139,11 +144,12 @@ export default function FormNewCashFlowComponent({onTitleChange, onReleaseChange
             {enterpriseName && confirmEnterpriseName && 
                 <div>
                     <div className="field">
-                        <label className="flex align-items-center gap-2">
+                        <label htmlFor="type" className="flex align-items-center gap-2">
                             <i className={selectFields.type.icon}></i>
                             {selectFields.type.label}
                         </label>
                         <Dropdown 
+                            id="type"
                             value={type} 
                             onChange={(e) => setType(e.target.value)} 
                             options={selectFields.type.options} 
@@ -155,11 +161,12 @@ export default function FormNewCashFlowComponent({onTitleChange, onReleaseChange
                         />
                     </div>
                     <div className="field">
-                        <label className="flex align-items-center gap-2">
+                        <label htmlFor="payment" className="flex align-items-center gap-2">
                             <i className={selectFields.payment.icon}></i>
                             {selectFields.payment.label}
                         </label>
                         <Dropdown 
+                            id="payment"
                             value={payment} 
                             onChange={(e) => setPayment(e.target.value)} 
                             options={selectFields.payment.options} 
@@ -170,44 +177,73 @@ export default function FormNewCashFlowComponent({onTitleChange, onReleaseChange
                             highlightOnSelect={false} 
                         />
                     </div>
-                    <div className="field">
-                        <label className="flex align-items-center gap-2">
-                            <i className={dateFields.releaseDate.icon}></i>
-                            {dateFields.releaseDate.label}
-                        </label>
-                        <Calendar 
-                            className="w-full p-inputtext-sm"
-                            value={date} 
-                            onChange={(e) => setDate(e.target.value)} 
-                            dateFormat={dateFields.releaseDate.format} 
-                            readOnlyInput
-                        />
+                    <div className="flex gap-2 p-fluid">
+                        <div className="field flex-auto">
+                            <label htmlFor="date" className="flex align-items-center gap-2">
+                                <i className={dateFields.releaseDate.icon}></i>
+                                {dateFields.releaseDate.label}
+                            </label>
+                            <Calendar 
+                                id="date"
+                                className="w-full p-inputtext-sm"
+                                value={date} 
+                                onChange={(e) => setDate(e.target.value)} 
+                                dateFormat={dateFields.releaseDate.format} 
+                                readOnlyInput
+                            />
+                        </div>
+                        <div className="field flex-auto">
+                            <label htmlFor="amount" className="flex align-items-center gap-2">
+                                <i className={currencyFields.releaseAmount.icon}></i>
+                                {currencyFields.releaseAmount.label}
+                            </label>
+                            <InputNumber
+                                id="amount"
+                                className="w-full p-inputtext-sm" 
+                                value={amount} 
+                                onValueChange={(e) => setAmount(e.target.value)} 
+                                mode="currency" 
+                                currency={currencyFields.releaseAmount.currency} 
+                                locale={currencyFields.releaseAmount.locale} 
+                            />
+                        </div>
                     </div>
                     <div className="field">
-                        <label className="flex align-items-center gap-2">
-                            <i className={currencyFields.releaseAmount.icon}></i>
-                            {currencyFields.releaseAmount.label}
-                        </label>
-                        <InputNumber
-                            className="w-full p-inputtext-sm" 
-                            value={amount} 
-                            onValueChange={(e) => setAmount(e.target.value)} 
-                            mode="currency" 
-                            currency={currencyFields.releaseAmount.currency} 
-                            locale={currencyFields.releaseAmount.locale} />
-                    </div>
-                    <div className="field">
-                        <label className="flex align-items-center gap-2">
+                        <label htmlFor="description" className="flex align-items-center gap-2">
                             <i className={textFields.description.icon}></i>
                             {textFields.description.label}
                         </label>
-                        <InputText 
+                        <InputText
+                            id="description" 
                             className="w-full p-inputtext-sm"
                             value={description} 
                             onChange={(e) => setDescription(e.target.value)}
                         />
                     </div>
-                    <div className="flex justify-content-center gap-5">
+                    <div  className="field">
+                        <div className="flex">
+                            <label htmlFor="repeatRelease" className="flex align-items-center gap-2 mr-2">
+                                <i className={booleanFields.repeatRelease.icon}></i>
+                                {booleanFields.repeatRelease.label}
+                            </label>
+                            <Checkbox id="repeatRelease" onChange={(e) => setRepeat(e.checked)} checked={repeat} tooltip={booleanFields.repeatRelease.description}/>
+                        </div>
+                    </div>
+                    {repeat &&
+                        <div className="field">
+                            <label htmlFor="totalRepeats" className="flex align-items-center gap-2">
+                                {numberFields.totalRepeats.label}
+                            </label>
+                            <InputNumber
+                                id="totalRepeats" 
+                                className="w-full p-inputtext-sm"
+                                value={totalRepeats} 
+                                onChange={(e) => setTotalRepeats(e.target.value)}
+                                tooltip={numberFields.totalRepeats.description}
+                            />
+                        </div> 
+                    }
+                    <div className="flex justify-content-center gap-5 mt-4">
                         <Button text raised label={generalFormLabels.buttons.cancel} severity="danger" icon="pi pi-times" size="small" onClick={clearForm}/>
                         <Button text raised label={generalFormLabels.buttons.add} severity="success" icon="pi pi-check" size="small" onClick={saveRelease}/>
                     </div>

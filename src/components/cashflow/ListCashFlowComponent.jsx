@@ -52,7 +52,7 @@ export default function ListCashFlowComponent({releases, totals, onRemoveRelease
                 message={messages.alerts.confirmRemove.message}
                 visible={visibleRemoveDialog}
             />
-            <DataTable className="mt-1" value={releases} paginator rows={5} rowsPerPageOptions={[5, 10, 15, 20, 25, 30]} removableSort>
+            <DataTable className="mt-1" value={releases} paginator rows={5} rowsPerPageOptions={[5, 15, 25, 35, 45, 55]} removableSort>
                 <Column field="date" header={fields.date.title} style={{ width: '10%' }} sortable></Column>
                 <Column field="type" header={fields.type.title} style={{ width: '20%' }}></Column>
                 <Column field="description" header={fields.description.title} style={{ width: '30%' }}></Column>

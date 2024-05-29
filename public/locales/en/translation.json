@@ -1,6 +1,6 @@
 {
   "fields": {
-    "locale": "en",
+    "locale": "en-US",
     "enterpriseName": {
       "title": "Enterprise"
     },
@@ -26,6 +26,14 @@
     },
     "description": {
       "title": "Description"
+    },
+    "repeatRelease": {
+      "title": "Repeat this release",
+      "description": "Check this option if you want to repeat the financial release."
+    },
+    "totalRepeats": {
+      "title": "Quantity",
+      "description": "Enter how many times you want to repeat the release."
     },
     "currency": {
       "label": "$",

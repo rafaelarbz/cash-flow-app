@@ -27,6 +27,14 @@
     "description": {
       "title": "Descrição"
     },
+    "repeatRelease": {
+      "title": "Repetir este lançamento",
+      "description": "Marque esta opção se desejar repetir o lançamento financeiro."
+    },
+    "totalRepeats": {
+      "title": "Quantidade",
+      "description": "Informe quantas vezes deseja repetir o lançamento."
+    },
     "currency": {
       "label": "R$",
       "type": "BRL"
