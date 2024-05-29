@@ -6,6 +6,7 @@ import { PrimeReactProvider } from 'primereact/api';
 import { RouterProvider } from 'react-router-dom';
 import { routes } from './routes';
 import { ToastProvider } from './contexts/ToastContext';
+import './i18n';
 
 export default function App() {
 
