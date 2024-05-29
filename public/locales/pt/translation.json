@@ -64,7 +64,8 @@
   "functionalities": {
     "newRealease": "Novo Lançamento",
     "listReleases": "Lançamentos",
-    "listReleasesFromEnterprise": "Lançamentos de "
+    "listReleasesFromEnterprise": "Lançamentos de ",
+    "home": "Início"
   },
   "errors": {
     "noReleasesToExport": {
@@ -100,6 +101,16 @@
     "confirmRemove": {
       "title": "Atenção",
       "message": "Deseja remover item?"
+    }
+  },
+  "menu": {
+    "home": {
+      "title": "Início",
+      "description": "Página Inicial"
+    },
+    "newRelease": {
+      "title": "Novo Lançamento",
+      "description": "Adicionar Lançamentos Financeiros"
     }
   }
 }  

@@ -101,6 +101,16 @@
       "title": "Attention",
       "message": "Want to remove this item?"
     }
+  },
+  "menu": {
+    "home": {
+      "title": "Home",
+      "description": "Main Page"
+    },
+    "newRelease": {
+      "title": "New Release",
+      "description": "Add Financial Releases"
+    }
   }
 }
   
