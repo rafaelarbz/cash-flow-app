@@ -118,6 +118,10 @@ export default function FormNewCashFlowComponent({onTitleChange, onReleaseChange
     const removeRelease = (id) => {
         const updatedReleases = releases.filter(item => item.id !== id);
         setReleases(updatedReleases);
+        showToast(
+            'success', 
+            messages.alerts.generalSuccess.title, 
+            messages.alerts.generalSuccess.message);
     };
 
     const getType = (value) => {
