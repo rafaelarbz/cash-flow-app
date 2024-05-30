@@ -104,7 +104,7 @@ export default function FormNewCashFlowComponent({onTitleChange, onReleaseChange
             date: formattedDate,
             amount: formattedTotalAmount || formattedAmount,
             description: description,
-            info: infoTotalAmount
+            infoTotalAmount: infoTotalAmount
         };
 
         setReleases([...releases, release]);

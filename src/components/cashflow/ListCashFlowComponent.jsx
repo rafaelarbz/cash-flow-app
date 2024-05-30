@@ -4,7 +4,7 @@ import { Divider } from 'primereact/divider';
 import { useFields, useFunctionalities, useTotalsInfoLabel } from '../../utils/CashFlowUtil';
 import { Button } from 'primereact/button';
 import ConfirmDialogComponent from '../general/ConfirmDialogComponent';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useMessage } from '../../utils/MessagesUtil';
 
 export default function ListCashFlowComponent({releases, totals, onRemoveRelease}) {
@@ -24,6 +24,16 @@ export default function ListCashFlowComponent({releases, totals, onRemoveRelease
                     aria-label="Cancel" 
                     size="small"
                 />;
+    };
+
+    const bodyInfosRelease = (rowData) => {
+        return (
+            <>
+                <small>{rowData.description}</small>
+                <br></br>
+                <small>{rowData.infoTotalAmount}</small>
+            </>
+        );
     };
 
     const removeRelease = (release) => {
@@ -55,7 +65,7 @@ export default function ListCashFlowComponent({releases, totals, onRemoveRelease
             <DataTable className="mt-1" value={releases} paginator rows={5} rowsPerPageOptions={[5, 15, 25, 35, 45, 55]} removableSort>
                 <Column field="date" header={fields.date.title} style={{ width: '10%' }} sortable></Column>
                 <Column field="type" header={fields.type.title} style={{ width: '20%' }}></Column>
-                <Column field="description" header={fields.description.title} style={{ width: '30%' }}></Column>
+                <Column body={bodyInfosRelease} header={fields.description.title} style={{ width: '30%' }}></Column>
                 <Column field="payment" header={fields.payment.title} style={{ width: '20%' }}></Column>
                 <Column field="amount" header={fields.amount.title} style={{ width: '15%' }}></Column>
                 <Column style={{ width: '10%' }} body={bodyRemoveTemplate} />
@@ -64,6 +74,8 @@ export default function ListCashFlowComponent({releases, totals, onRemoveRelease
                 {totalsInfoLabel.inflow.total} {totals[fields.type.options.inflow]['total'] || `${fields.currency.label} 0,00`}
                 <Divider />
                 {totalsInfoLabel.outflow.total} {totals[fields.type.options.outflow]['total'] || `${fields.currency.label} 0,00`}
+                <Divider />
+                {totalsInfoLabel.netFlow.total} { totals['netFlow']['total'] || `${fields.currency.label} 0,00`}
                 <Divider />
                 {totalsInfoLabel.inflow.card} {totals[fields.type.options.inflow][fields.payment.options.card] ||`${fields.currency.label} 0,00`}
                 <Divider />

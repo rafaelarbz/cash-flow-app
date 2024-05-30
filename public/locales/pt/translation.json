@@ -27,6 +27,15 @@
     "totalAmount": {
       "title": "Valor Total"
     },
+    "infoTotalAmount": {
+      "title": "Total Detalhado"
+    },
+    "total": {
+        "title": "Total"
+    },
+    "totals": {
+        "title": "Totais"
+    },
     "description": {
       "title": "Descrição"
     },
@@ -58,6 +67,9 @@
       "total": "Total de Saídas: ",
       "card": "Total de Saídas - Cartão: ",
       "cash": "Total de Saídas - Dinheiro: "
+    },
+    "netFlow": {
+      "total": "Total Líquido: "
     }
   },
   "buttons": {
