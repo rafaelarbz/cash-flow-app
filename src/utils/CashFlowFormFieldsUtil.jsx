@@ -41,6 +41,12 @@ export const useFormFields = () =>  {
                 icon: 'pi pi-receipt',
                 currency: fields.currency.type,
                 locale: fields.locale
+            },
+            totalReleaseAmount: {
+                label: fields.totalAmount.title,
+                icon: 'pi pi-receipt',
+                currency: fields.currency.type,
+                locale: fields.locale
             }
         },
         dateFields: {
@@ -48,6 +54,20 @@ export const useFormFields = () =>  {
                 label: `${fields.date.title} *`,
                 icon: 'pi pi-calendar',
                 format: fields.dateFormat
+            }
+        },
+        inputNumber: {
+            totalRepeats: {
+                label: `${fields.totalRepeats.title} *`,
+                description: fields.totalRepeats.description,
+                icon: 'pi pi-plus'
+            }
+        },
+        inputBoolean: {
+            repeatRelease: {
+                label: fields.repeatRelease.title,
+                description: fields.repeatRelease.description,
+                icon: 'pi pi-sync'
             }
         }
     };

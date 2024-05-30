@@ -29,8 +29,28 @@ export const useFields = () => {
     amount: {
       title: t('fields.amount.title')
     },
+    totalAmount: {
+      title: t('fields.totalAmount.title')
+    },
+    infoTotalAmount: {
+      title: t('fields.infoTotalAmount.title')
+    },
+    total: {
+      title: t('fields.total.title')
+    },
+    totals: {
+      title: t('fields.totals.title')
+    },
     description: {
       title: t('fields.description.title')
+    },
+    repeatRelease: {
+      title: t('fields.repeatRelease.title'),
+      description: t('fields.repeatRelease.description')
+    },
+    totalRepeats: {
+      title: t('fields.totalRepeats.title'),
+      description: t('fields.totalRepeats.description')
     },
     currency: {
       label: t('fields.currency.label'),
@@ -58,6 +78,9 @@ export const useTotalsStructure = () => {
       'total': 0,
       [fields.payment.options.card]: 0,
       [fields.payment.options.cash]: 0
+    },
+    ['netFlow']: {
+      'total': 0
     }
   };
 }
@@ -70,6 +93,7 @@ export const useReleaseColumnsToExport = () => {
     { field: 'date', header: fields.date.title },
     { field: 'type', header: fields.type.title },
     { field: 'description', header: fields.description.title },
+    { field: 'infoTotalAmount', header: fields.infoTotalAmount.title },
     { field: 'payment', header: fields.payment.title },
     { field: 'amount', header: fields.amount.title }
   ];
@@ -89,6 +113,9 @@ export const useTotalsInfoLabel = () => {
       total: t('totalsInfoLabel.outflow.total'),
       card: t('totalsInfoLabel.outflow.card'),
       cash: t('totalsInfoLabel.outflow.cash')
+    },
+    netFlow: {
+      total: t('totalsInfoLabel.netFlow.total')
     }
   };
 };

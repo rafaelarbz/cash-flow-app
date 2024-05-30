@@ -24,8 +24,28 @@
     "amount": {
       "title": "Valor"
     },
+    "totalAmount": {
+      "title": "Valor Total"
+    },
+    "infoTotalAmount": {
+      "title": "Total Detalhado"
+    },
+    "total": {
+        "title": "Total"
+    },
+    "totals": {
+        "title": "Totais"
+    },
     "description": {
       "title": "Descrição"
+    },
+    "repeatRelease": {
+      "title": "Repetir este lançamento",
+      "description": "Marque esta opção se desejar repetir o lançamento financeiro."
+    },
+    "totalRepeats": {
+      "title": "Quantidade",
+      "description": "Informe quantas vezes deseja repetir o lançamento."
     },
     "currency": {
       "label": "R$",
@@ -47,6 +67,9 @@
       "total": "Total de Saídas: ",
       "card": "Total de Saídas - Cartão: ",
       "cash": "Total de Saídas - Dinheiro: "
+    },
+    "netFlow": {
+      "total": "Total Líquido: "
     }
   },
   "buttons": {

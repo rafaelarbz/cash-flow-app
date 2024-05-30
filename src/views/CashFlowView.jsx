@@ -54,11 +54,13 @@ export default function CashFlowView() {
             doc.autoTable(columnsDetails, releases);
             doc.autoTable([{
                 dataKey: 'total',
-                title: 'Totais'
+                title: fields.totals.title
             }], [{
                 total: totalsInfoLabel.inflow.total+totals[fields.type.options.inflow]['total']
             }, {
                 total: totalsInfoLabel.outflow.total+totals[fields.type.options.outflow]['total']
+            }, {
+                total: totalsInfoLabel.netFlow.total+totals['netFlow']['total']
             }, {
                 total: totalsInfoLabel.inflow.card+totals[fields.type.options.inflow][fields.payment.options.card]
             }, {
@@ -86,7 +88,7 @@ export default function CashFlowView() {
     }, [releases]);
 
     const sumTotals = () => {
-        let newTotals = JSON.parse(JSON.stringify(totalsStructure)); // Clona a estrutura para evitar mutação direta
+        let newTotals = JSON.parse(JSON.stringify(totalsStructure));
     
         releases.forEach((release) => {
           const numericValue = parseFloat(
@@ -95,6 +97,12 @@ export default function CashFlowView() {
     
           newTotals[release.type][release.payment] += numericValue;
           newTotals[release.type]['total'] += numericValue;
+
+            if (release.type === fields.type.options.inflow) {
+                newTotals['netFlow']['total'] += numericValue;
+            } else if (release.type === fields.type.options.outflow) {
+                newTotals['netFlow']['total'] -= numericValue;
+            }
         });
     
         Object.keys(newTotals).forEach(type => {

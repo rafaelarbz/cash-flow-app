@@ -1,6 +1,6 @@
 {
   "fields": {
-    "locale": "en",
+    "locale": "en-US",
     "enterpriseName": {
       "title": "Enterprise"
     },
@@ -24,8 +24,28 @@
     "amount": {
       "title": "Amount"
     },
+    "totalAmount": {
+      "title": "Total Amount"
+    },
+    "infoTotalAmount": {
+      "title": "Detailed Total"
+    },
+    "total": {
+        "title": "Total"
+    },
+    "totals": {
+        "title": "Totals"
+    },
     "description": {
       "title": "Description"
+    },
+    "repeatRelease": {
+      "title": "Repeat this release",
+      "description": "Check this option if you want to repeat the financial release."
+    },
+    "totalRepeats": {
+      "title": "Quantity",
+      "description": "Enter how many times you want to repeat the release."
     },
     "currency": {
       "label": "$",
@@ -47,6 +67,9 @@
       "total": "Total Outflows: ",
       "card": "Total Outflows - Card: ",
       "cash": "Total Outflows - Cash: "
+    },
+    "netFlow": {
+      "total": "Net Total: "
     }
   },
   "buttons": {
