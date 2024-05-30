@@ -24,6 +24,9 @@
     "amount": {
       "title": "Valor"
     },
+    "totalAmount": {
+      "title": "Valor Total"
+    },
     "description": {
       "title": "Descrição"
     },

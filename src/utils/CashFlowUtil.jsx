@@ -29,6 +29,9 @@ export const useFields = () => {
     amount: {
       title: t('fields.amount.title')
     },
+    totalAmount: {
+      title: t('fields.totalAmount.title')
+    },
     description: {
       title: t('fields.description.title')
     },

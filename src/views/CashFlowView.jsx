@@ -86,7 +86,7 @@ export default function CashFlowView() {
     }, [releases]);
 
     const sumTotals = () => {
-        let newTotals = JSON.parse(JSON.stringify(totalsStructure)); // Clona a estrutura para evitar mutação direta
+        let newTotals = JSON.parse(JSON.stringify(totalsStructure));
     
         releases.forEach((release) => {
           const numericValue = parseFloat(

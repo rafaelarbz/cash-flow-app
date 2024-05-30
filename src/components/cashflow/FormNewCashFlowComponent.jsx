@@ -30,6 +30,7 @@ export default function FormNewCashFlowComponent({onTitleChange, onReleaseChange
     const [confirmEnterpriseName, setConfirmEnterpriseName] = useState(false);
     const [repeat, setRepeat] = useState(false);
     const [totalRepeats, setTotalRepeats] = useState(null);
+    const [totalAmount, setTotalAmount] = useState(null);
 
     //FORM
     const selectFields = formFields.selectFields;
@@ -47,11 +48,15 @@ export default function FormNewCashFlowComponent({onTitleChange, onReleaseChange
         if (selectedId) {
             removeRelease(selectedId);
         }
-    }, [selectedId])
+    }, [selectedId]);
 
     useEffect(() => {
         onTitleChange(enterpriseName);
     }, [enterpriseName]);
+
+    useEffect(() => {
+        sumTotalAmount();
+    }, [totalRepeats, amount]);
     
     const clearForm = () => {
         setType(null);
@@ -59,6 +64,9 @@ export default function FormNewCashFlowComponent({onTitleChange, onReleaseChange
         setDate(null);
         setAmount(null);
         setDescription("");
+        setRepeat(false);
+        setTotalRepeats(null);
+        setTotalAmount(null);
     };
 
     const saveEnterpriseName = () => {
@@ -74,7 +82,7 @@ export default function FormNewCashFlowComponent({onTitleChange, onReleaseChange
     };
 
     const saveRelease = () => {
-        if (!type || !payment || !date || !amount || !description) {
+        if (!type || !payment || !date || !amount || !description || repeat && !totalRepeats) {
             showToast(
                 'error', 
                 messages.errors.fieldsRequired.title, 
@@ -84,16 +92,19 @@ export default function FormNewCashFlowComponent({onTitleChange, onReleaseChange
     
         const formattedDate = date ? formatDate(date, fields.locale) : null;
         const formattedAmount = amount ? formatCurrency(amount, fields.locale, fields.currency.type) : null;
+        const formattedTotalAmount = totalAmount ? formatCurrency(totalAmount, fields.locale, fields.currency.type) : null;
         const formattedType = type ? getType(type) : null;
         const formattedPayment = payment ? getPayment(payment) : null;
+        const infoTotalAmount = totalAmount ? `${totalRepeats} x ${formattedAmount}` : null;
 
         const release = {
             id: Date.now(),
             type: formattedType,
             payment: formattedPayment,
             date: formattedDate,
-            amount: formattedAmount,
-            description: description
+            amount: formattedTotalAmount || formattedAmount,
+            description: description,
+            info: infoTotalAmount
         };
 
         setReleases([...releases, release]);
@@ -115,6 +126,15 @@ export default function FormNewCashFlowComponent({onTitleChange, onReleaseChange
 
     const getPayment = (value) => {
         return fields.payment.options[value] || null;
+    };
+
+    const sumTotalAmount = () => {
+        if (totalRepeats > 0) {
+            const total = totalRepeats * amount;
+            setTotalAmount(total);
+        } else {
+            setTotalAmount(null);
+        }
     };
 
     return (
@@ -226,22 +246,45 @@ export default function FormNewCashFlowComponent({onTitleChange, onReleaseChange
                                 <i className={booleanFields.repeatRelease.icon}></i>
                                 {booleanFields.repeatRelease.label}
                             </label>
-                            <Checkbox id="repeatRelease" onChange={(e) => setRepeat(e.checked)} checked={repeat} tooltip={booleanFields.repeatRelease.description}/>
+                            <Checkbox 
+                                id="repeatRelease" 
+                                onChange={(e) => setRepeat(e.checked)} 
+                                checked={repeat} 
+                                tooltip={booleanFields.repeatRelease.description}
+                                tooltipOptions={{ position: 'top' }}
+                                />
                         </div>
                     </div>
                     {repeat &&
-                        <div className="field">
-                            <label htmlFor="totalRepeats" className="flex align-items-center gap-2">
-                                {numberFields.totalRepeats.label}
-                            </label>
-                            <InputNumber
-                                id="totalRepeats" 
-                                className="w-full p-inputtext-sm"
-                                value={totalRepeats} 
-                                onChange={(e) => setTotalRepeats(e.target.value)}
-                                tooltip={numberFields.totalRepeats.description}
-                            />
-                        </div> 
+                        <div className="flex gap-2 p-fluid">
+                            <div className="field flex-auto">
+                                <label htmlFor="totalRepeats" className="flex align-items-center gap-2">
+                                    {numberFields.totalRepeats.label}
+                                </label>
+                                <InputNumber
+                                    id="totalRepeats" 
+                                    className="w-full p-inputtext-sm"
+                                    value={totalRepeats} 
+                                    onValueChange={(e) => setTotalRepeats(e.target.value)}
+                                    tooltip={numberFields.totalRepeats.description}
+                                    tooltipOptions={{ position: 'mouse', autoHide: false }}
+                                />
+                            </div>
+                            <div className="field flex-auto">
+                                <label htmlFor="totalAmount" className="flex align-items-center gap-2">
+                                    {currencyFields.totalReleaseAmount.label}
+                                </label>
+                                <InputNumber
+                                    id="totalAmount"
+                                    className="w-full p-inputtext-sm" 
+                                    value={totalAmount} 
+                                    mode="currency" 
+                                    currency={currencyFields.totalReleaseAmount.currency} 
+                                    locale={currencyFields.totalReleaseAmount.locale} 
+                                    readOnly
+                                />
+                            </div>
+                        </div>
                     }
                     <div className="flex justify-content-center gap-5 mt-4">
                         <Button text raised label={generalFormLabels.buttons.cancel} severity="danger" icon="pi pi-times" size="small" onClick={clearForm}/>

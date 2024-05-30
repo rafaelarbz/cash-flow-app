@@ -41,6 +41,12 @@ export const useFormFields = () =>  {
                 icon: 'pi pi-receipt',
                 currency: fields.currency.type,
                 locale: fields.locale
+            },
+            totalReleaseAmount: {
+                label: fields.totalAmount.title,
+                icon: 'pi pi-receipt',
+                currency: fields.currency.type,
+                locale: fields.locale
             }
         },
         dateFields: {
