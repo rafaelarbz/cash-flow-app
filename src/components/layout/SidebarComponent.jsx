@@ -3,26 +3,31 @@ import { Sidebar } from 'primereact/sidebar';
 import { Button } from 'primereact/button';
 import { Avatar } from 'primereact/avatar';
 import { Ripple } from 'primereact/ripple';
+import { APP_NAME } from '../../utils/application';
 
-export default function SidebarComponent({menuItems = {}}) {
+export default function SidebarComponent({ menuItems = {} }) {
   const [visible, setVisible] = useState(false);
 
   const customHeader = (
       <div className="flex align-items-center gap-2">
           <Avatar image="images/cash-flow.svg" shape="circle" />
-          <span>Cash Flow</span>
+          <span>{APP_NAME}</span>
       </div>
   );
 
   return (
     <>
       <Button 
-        className="fixed"
+        className="static gap-2"
         severity="secondary"
         icon="pi pi-bars" 
-        rounded text raised 
+        size="large"
+        title="Menu"
+        text  
         onClick={() => setVisible(!visible)} 
-      />
+      >
+        Menu
+      </Button>
       
       <Sidebar header={customHeader} visible={visible} onHide={() => setVisible(false)}>
         <ul className="list-none p-0 m-0 overflow-hidden">

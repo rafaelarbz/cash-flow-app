@@ -1,8 +1,8 @@
 import { Route, createBrowserRouter, createRoutesFromElements } from "react-router-dom";
-import Layout from "./views/Layout";
 import CashFlowView from "./views/CashFlowView";
 import ErrorView from "./views/ErrorView";
 import HomeView from "./views/HomeView";
+import Layout from "./components/layout/LayoutComponent";
 
 export const routes = createBrowserRouter(
   createRoutesFromElements(

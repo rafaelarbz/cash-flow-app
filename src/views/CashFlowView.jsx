@@ -121,7 +121,7 @@ export default function CashFlowView() {
             lg:flex lg:mr-5 lg:ml-5
             xl:flex xl:mr-5 lg:ml-5
             gap-2">
-            <div className="md:col-4 lg:col-4 xl:col-4">
+            <div className="sm:mb-2 md:mb-2 md:col-4 lg:col-4 xl:col-4">
                 <BasicCardComponent title={labelFunctionalities.newRealease} content={(
                     <FormNewCashFlowComponent 
                         onTitleChange={handleTitleChange}

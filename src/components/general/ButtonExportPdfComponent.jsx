@@ -1,6 +1,6 @@
 import { Button } from 'primereact/button';
 
-export default function ButtonExportPdfComponent({exportPdf}) {
+export default function ButtonExportPdfComponent({ exportPdf }) {
 
     return (
         <Button 
