@@ -4,6 +4,6 @@ export default function FooterComponent() {
     const currentYear = new Date().getFullYear();
 
     return (
-        <span>{APP_NAME} &copy; {currentYear}</span>
+        <span>{APP_NAME} &copy; {currentYear} &bull; All Rights Reserved</span>
     );
 }

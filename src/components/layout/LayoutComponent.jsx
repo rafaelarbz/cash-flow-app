@@ -7,18 +7,16 @@ export default function LayoutComponent() {
     const menuItems = useMenu();
 
     return (
-        <>
-            <header className="static w-full">
+        <div className="relative min-h-full">
+            <header className="fixed top-0 left-0 right-0 z-1 bg-white shadow-1 p-1">
                 <SidebarComponent menuItems={menuItems} />
             </header>
-            <main className="flex flex-column w-full">
+            <main className="pt-7 pb-7 left-0 right-0">
                 <Outlet />
             </main>
-            <footer className="
-                static bottom-0 mb-4 mt-4 w-full 
-                flex align-items-center justify-content-center">
+            <footer className="fixed bottom-0 left-0 right-0 z-1 bg-white shadow-1 p-4 flex justify-content-center">
                 <Footer />
             </footer>
-        </>
+        </div>
     );
 }
