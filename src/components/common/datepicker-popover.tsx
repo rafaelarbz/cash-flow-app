@@ -2,20 +2,20 @@ import {
     Popover, 
     PopoverContent, 
     PopoverTrigger 
-} from '@/components/ui/popover';
-import { Button } from '@/components/ui/button';
+} from '../../components/ui/popover'
+import { Button } from '../../components/ui/button'
 import { 
     FormControl, 
     FormField, 
     FormItem, 
     FormLabel, 
     FormMessage 
-} from '@/components/ui/form';
-import { formatDate } from '@/utils/formatter';
-import { useTranslations } from '@/translations/translations';
-import { CalendarIcon } from 'lucide-react';
-import { Calendar } from '@/components/ui/calendar';
-import { Control, FieldValues } from 'react-hook-form';
+} from '../../components/ui/form'
+import { formatDate } from '../../utils/formatter'
+import { useTranslations } from '../../translations/translations'
+import { CalendarIcon } from 'lucide-react'
+import { Calendar } from '../../components/ui/calendar'
+import { Control, FieldValues } from 'react-hook-form'
 
 interface DatePickerPopoverProps {
     control: Control<FieldValues>,

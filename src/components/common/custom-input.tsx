@@ -1,8 +1,8 @@
-import { FormControl, FormField, FormItem, FormLabel, FormMessage } from "../ui/form";
-import { Control, FieldValues, useFormContext } from "react-hook-form";
-import { Input } from "@/components/ui/input";
-import { ChangeEvent } from "react";
-import { applyMask, MaskName } from "@/utils/maskUtils";
+import { FormControl, FormField, FormItem, FormLabel, FormMessage } from "../ui/form"
+import { Control, FieldValues, useFormContext } from "react-hook-form"
+import { Input } from "../../components/ui/input"
+import { ChangeEvent } from "react"
+import { applyMask, MaskName } from "../../utils/maskUtils"
 
 interface CustomInputProps {
     control: Control<FieldValues>,

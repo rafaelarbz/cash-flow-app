@@ -1,5 +1,5 @@
-import { Transaction } from "@/entities/transaction/types/transaction.type";
-import { Totals } from "@/entities/transaction/types/totals.type";
+import { Transaction } from "../../entities/transaction/types/transaction.type"
+import { Totals } from "../../entities/transaction/types/totals.type"
 
 export const calculateTotals = (transactions: Transaction[]): Totals => {
     return transactions.reduce(

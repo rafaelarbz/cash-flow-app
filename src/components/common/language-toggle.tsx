@@ -1,14 +1,14 @@
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "react-i18next"
 import { 
     DropdownMenu, 
     DropdownMenuContent,
     DropdownMenuItem, 
     DropdownMenuTrigger 
-} from "@/components/ui/dropdown-menu";
-import { Button } from "@/components/ui/button";
-import { useEffect } from "react";
-import { LanguageCode, I18N_STORAGE_KEY, SUPPORTED_LANGUAGES } from "@/configs";
-import { useTranslations } from "@/translations/translations";
+} from "../../components/ui/dropdown-menu"
+import { Button } from "../../components/ui/button"
+import { useEffect } from "react"
+import { LanguageCode, I18N_STORAGE_KEY, SUPPORTED_LANGUAGES } from "../../configs"
+import { useTranslations } from "../../translations/translations"
 
 export function LanguageToggle() {
     const { i18n } = useTranslation()

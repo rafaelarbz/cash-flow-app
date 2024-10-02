@@ -1,5 +1,5 @@
-import i18n from 'i18next';
-import { SUPPORTED_LANGUAGES } from '@/configs';
+import i18n from 'i18next'
+import { SUPPORTED_LANGUAGES } from '../../configs'
 
 export function formatCurrency(amount: string | number): string {
     const numericValue = typeof amount ===  'string' ? parseFloat(amount) / 100 : amount

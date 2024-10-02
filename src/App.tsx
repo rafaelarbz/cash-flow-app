@@ -1,10 +1,10 @@
-import '@/global.css'
+import './global.css'
 import '../node_modules/flag-icons/css/flag-icons.min.css';
-import { AppRoutesProvider } from "@/routes/app-routes-provider"
-import { ThemeProvider } from "@/components/common/theme-provider"
-import { Layout } from "@/components/layout"
+import { AppRoutesProvider } from "./routes/app-routes-provider"
+import { ThemeProvider } from "./components/common/theme-provider"
+import { Layout } from "./components/layout"
 import { I18nextProvider } from 'react-i18next'
-import i18n from '@/i18n'
+import i18n from './i18n'
 
 export default function App() {
   return (

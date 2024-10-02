@@ -1,18 +1,18 @@
-import { useCallback, useEffect, useState } from "react";
-import { Transaction } from "@/entities/transaction/types/transaction.type";
-import { useTranslations } from "@/translations/translations";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useTransactionSchema } from "@/entities/transaction/schemas/transaction.schema";
+import { useCallback, useEffect, useState } from "react"
+import { Transaction } from "../../../entities/transaction/types/transaction.type"
+import { useTranslations } from "../../../translations/translations"
+import { useForm } from "react-hook-form"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useTransactionSchema } from "../../../entities/transaction/schemas/transaction.schema"
 import { 
     clearTransactions, 
     getStoredTransactions, 
     removeTransaction,
     saveOrUpdateTransaction,
-} from "@/services/storageService/transaction.service";
-import { Totals } from "@/entities/transaction/types/totals.type";
-import { calculateTotals } from "@/utils/calculations";
-import { toast } from "sonner";
+} from "../../../services/storageService/transaction.service"
+import { Totals } from "../../../entities/transaction/types/totals.type"
+import { calculateTotals } from "../../../utils/calculations"
+import { toast } from "sonner"
 
 export const useTransactionFormListHook = (initialValues: Transaction) => {
     const translations = useTranslations()

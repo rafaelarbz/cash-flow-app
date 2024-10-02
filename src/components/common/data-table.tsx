@@ -13,8 +13,8 @@ import {
     TableHead,
     TableHeader,
     TableRow,
-} from "@/components/ui/table"
-import { useTranslations } from "@/translations/translations"
+} from "../../components/ui/table"
+import { useTranslations } from "../../translations/translations"
 import { Button } from "../ui/button"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 
@@ -84,7 +84,7 @@ export function DataTable<TData, TValue>({
                 <div className="flex-1 text-sm text-muted-foreground">
                     {table.getRowCount()}
                     {" "}
-                    {translations.common.items}.
+                    {translations.common.items}
                 </div>
                 <div className="space-x-2">
                     <Button

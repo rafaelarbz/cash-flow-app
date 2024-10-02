@@ -4,8 +4,8 @@ import {
     SelectValue,
     SelectContent, 
     SelectItem 
-} from '@/components/ui/select';
-import { useTranslations } from '@/translations/translations';
+} from '../../components/ui/select'
+import { useTranslations } from '../../translations/translations'
 import { Control, FieldValues } from 'react-hook-form';
 import { 
     FormControl, 
@@ -13,7 +13,7 @@ import {
     FormItem, 
     FormLabel, 
     FormMessage 
-} from '@/components/ui/form';
+} from '../../components/ui/form'
 
 export interface IOption {
     label: string,

@@ -1,7 +1,7 @@
 import { z } from 'zod'
-import { useTranslations } from '@/translations/translations'
-import { TransactionTypeEnum } from '@/entities/transaction/enums/transaction-type.enum'
-import { PaymentMethodEnum } from '@/entities/transaction/enums/payment-method.enum'
+import { useTranslations } from '../../../translations/translations'
+import { TransactionTypeEnum } from '../../../entities/transaction/enums/transaction-type.enum'
+import { PaymentMethodEnum } from '../../../entities/transaction/enums/payment-method.enum'
 
 export const transactionSchema = (translations: typeof useTranslations) => z.object({
     id: z.string().uuid(),

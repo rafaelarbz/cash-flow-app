@@ -1,4 +1,4 @@
-import { useTranslations } from "@/translations/translations"
+import { useTranslations } from "../../translations/translations"
 
 export function Home() {
     const translations = useTranslations()

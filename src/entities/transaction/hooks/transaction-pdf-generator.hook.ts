@@ -1,12 +1,12 @@
-import { TableData } from "@/services/pdf.service";
-import { Transaction } from "@/entities/transaction/types/transaction.type";
-import { formatCurrency, formatDate } from "@/utils/formatter";
-import { useTranslations } from "@/translations/translations";
-import { Totals } from "@/entities/transaction/types/totals.type";
-import { ListData } from "@/services/pdf.service";
-import { createPdf } from "@/services/pdf.service";
-import { useCallback } from "react";
-import { ListItem } from "@/services/pdf.service";
+import { TableData } from "../../../services/pdf.service"
+import { Transaction } from "../types/transaction.type"
+import { formatCurrency, formatDate } from "../../../utils/formatter"
+import { useTranslations } from "../../../translations/translations"
+import { Totals } from "../../../entities/transaction/types/totals.type"
+import { ListData } from "../../../services/pdf.service"
+import { createPdf } from "../../..//services/pdf.service"
+import { useCallback } from "react"
+import { ListItem } from "../../../services/pdf.service"
 
 export const useTransactionPdfGeneratorHook = () => {
     const translations = useTranslations()

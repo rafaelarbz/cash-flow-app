@@ -5,10 +5,10 @@ import {
     DropdownMenuLabel,
     DropdownMenuItem,
     DropdownMenuSeparator
-} from "@/components/ui/dropdown-menu";
-import { MoreHorizontal } from "lucide-react";
-import { useTranslations } from "@/translations/translations";
-import { Button } from "../ui/button";
+} from "../../components/ui/dropdown-menu"
+import { MoreHorizontal } from "lucide-react"
+import { useTranslations } from "../../translations/translations"
+import { Button } from "../ui/button"
 
 export interface IAction {
     label: string

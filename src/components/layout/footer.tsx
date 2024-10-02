@@ -1,5 +1,5 @@
-import { GitHubLogoIcon, LinkedInLogoIcon } from "@radix-ui/react-icons";
-import { CONTACTS, APP_NAME } from "@/configs";
+import { GitHubLogoIcon, LinkedInLogoIcon } from "@radix-ui/react-icons"
+import { CONTACTS, APP_NAME } from "../../configs"
 
 export function Footer() {
     const currentYear = new Date().getFullYear()

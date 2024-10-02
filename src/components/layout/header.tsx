@@ -1,9 +1,9 @@
-import { APP_NAME } from "@/configs";
-import { ModeToggle } from "@/components/common/mode-toggle";
-import { HorizontalMenu } from "@/components/common/horizontal-menu";
-import { VerticalMenu } from "@/components/common/vertical-menu";
-import { useRoutes } from "@/routes/routes";
-import { LanguageToggle } from "@/components/common/language-toggle";
+import { APP_NAME } from "../../configs"
+import { ModeToggle } from "../../components/common/mode-toggle"
+import { HorizontalMenu } from "../../components/common/horizontal-menu"
+import { VerticalMenu } from "../../components/common/vertical-menu"
+import { useRoutes } from "../../routes/routes"
+import { LanguageToggle } from "../../components/common/language-toggle"
 
 export function Header() {
     const routes = useRoutes()

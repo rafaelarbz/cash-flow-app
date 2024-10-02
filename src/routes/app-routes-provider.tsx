@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { NotFound as NotFoundPage } from '@/pages/not-found';
-import { IRoute, useRoutes } from '@/routes/routes';
+import { NotFound as NotFoundPage } from '../pages/not-found'; 
+import { IRoute, useRoutes } from './routes'
 
 export function AppRoutesProvider() {
     const routes = useRoutes()

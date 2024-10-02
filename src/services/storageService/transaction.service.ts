@@ -1,4 +1,4 @@
-import { Transaction } from "@/entities/transaction/types/transaction.type";
+import { Transaction } from "../../entities/transaction/types/transaction.type" 
 
 const STORAGE_KEY = 'transactions'
 

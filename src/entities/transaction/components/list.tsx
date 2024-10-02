@@ -1,13 +1,13 @@
-import { DataTable } from "@/components/common/data-table";
-import { ActionMenu, IAction } from "@/components/common/action-menu";
-import { formatCurrency, formatDate } from "@/utils/formatter";
-import { ColumnDef } from "@tanstack/react-table";
-import { useTranslations } from "@/translations/translations";
-import { Transaction } from "@/entities/transaction/types/transaction.type";
+import { DataTable } from "../../../components/common/data-table"
+import { ActionMenu, IAction } from "../../../components/common/action-menu"
+import { formatCurrency, formatDate } from "../../../utils/formatter"
+import { ColumnDef } from "@tanstack/react-table"
+import { useTranslations } from "../../../translations/translations"
+import { Transaction } from "../../../entities/transaction/types/transaction.type"
 
 interface TransactionListProps {
     transactions?: Transaction[]
-    startEditingTransaction: (transactionId: string) => void
+    startEditingTransaction: (transaction: Transaction) => void
     deleteTransaction: (transactionId: string) => void
 }
 

@@ -1,5 +1,5 @@
-import { PaymentMethodEnum } from "@/entities/transaction/enums/payment-method.enum";
-import { TransactionTypeEnum } from "@/entities/transaction/enums/transaction-type.enum";
+import { PaymentMethodEnum } from "../enums/payment-method.enum"
+import { TransactionTypeEnum } from "../enums/transaction-type.enum"
 
 export interface Transaction {
     id: string,

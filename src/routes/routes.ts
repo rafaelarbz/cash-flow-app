@@ -1,6 +1,6 @@
-import { Home } from "@/pages/home"
-import { RegisterTransactions } from "@/pages/register-transactions"
-import { useTranslations } from "@/translations/translations"
+import { Home } from "../pages/home"
+import { RegisterTransactions } from "../pages/register-transactions"
+import { useTranslations } from "../translations/translations"
 
 export interface IRoute {
     name: string

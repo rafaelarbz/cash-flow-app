@@ -1,16 +1,16 @@
-import { Form } from "@/components/ui/form";
-import { Controller, useForm } from "react-hook-form";
-import { Button } from "@/components/ui/button";
-import { Switch } from "@/components/ui/switch";
-import { useTranslations } from "@/translations/translations";
-import { DatePickerPopover } from "@/components/common/datepicker-popover";
-import { CustomSelect } from "@/components/common/custom-select";
-import { CustomInput } from "@/components/common/custom-input";
-import { Label } from "@/components/ui/label";
-import { MaskName } from "@/utils/maskUtils";
-import { Transaction } from "@/entities/transaction/types/transaction.type";
-import { TransactionTypeEnum } from "../enums/transaction-type.enum";
-import { PaymentMethodEnum } from "../enums/payment-method.enum";
+import { Form } from "../../../components/ui/form"
+import { Controller, useForm } from "react-hook-form"
+import { Button } from "../../../components/ui/button"
+import { Switch } from "../../../components/ui/switch"
+import { useTranslations } from "../../../translations/translations"
+import { DatePickerPopover } from "../../../components/common/datepicker-popover"
+import { CustomSelect } from "../../../components/common/custom-select"
+import { CustomInput } from "../../../components/common/custom-input"
+import { Label } from "../../../components/ui/label"
+import { MaskName } from "../../../utils/maskUtils"
+import { Transaction } from "../../../entities/transaction/types/transaction.type"
+import { TransactionTypeEnum } from "../enums/transaction-type.enum"
+import { PaymentMethodEnum } from "../enums/payment-method.enum"
 
 interface TransactionFormProps {
     form: ReturnType<typeof useForm<Transaction>>

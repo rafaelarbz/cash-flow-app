@@ -3,8 +3,8 @@ import {
     NavigationMenuList, 
     NavigationMenuItem, 
     NavigationMenuLink
-} from "@/components/ui/navigation-menu";
-import { IRoute } from "@/routes";
+} from "../../components/ui/navigation-menu"
+import { IRoute } from "../../routes/routes" 
 
 type HorizontalMenuProps = {
     routes: Array<IRoute>

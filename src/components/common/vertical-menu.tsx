@@ -3,9 +3,9 @@ import {
     SheetContent,
     SheetHeader,
     SheetTrigger,
-} from "@/components/ui/sheet"
+} from "../../components/ui/sheet"
 import { HamburgerMenuIcon } from "@radix-ui/react-icons"
-import { IRoute } from "@/routes"
+import { IRoute } from "../../routes/routes" 
 
 type VerticalMenuProps = {
     routes: Array<IRoute>
