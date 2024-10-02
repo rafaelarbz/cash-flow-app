@@ -1,3 +1,3 @@
-export * from './currencyFormatterUtils'
-export * from './dateFormatterUtils'
-export * from './cpfCnpjFormatterUtils'
+export * from './currencyFormatter.util'
+export * from './dateFormatter.util'
+export * from './cpfCnpjFormatter.util'

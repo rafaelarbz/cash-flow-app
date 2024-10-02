@@ -1,1 +1,1 @@
-export * from './transactionTotalCalculatorUtils'
+export * from './transactionTotalCalculator.util'
