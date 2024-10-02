@@ -1,15 +1,30 @@
-## Cash Flow App
+# React + TypeScript + Vite
 
-**EN-US** -
-This is an intuitive and efficient system for recording financial inflows and outflows. Its main purpose is to allow you to record financial transactions and generate a detailed report that can be exported to PDF. Currently, the information entered is not stored in a database; also, there is no functionality for saving information during the session at this early stage. This means that all entries made will be lost if the page is reloaded. However, this limitation does not prevent the system from being used for temporary or testing purposes. Click on [Cash Flow App](https://cash-flow-app-eight.vercel.app/new) to visit the application in action.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-**PT-BR** -
-Este é um sistema intuitivo e eficiente para registrar entradas e saídas financeiras. Seu objetivo principal é permitir o registro de transações financeiras e gerar um relatório detalhado que pode ser exportado para PDF. Atualmente, as informações inseridas não são armazenadas em uma base de dados; também, não há funcionalidade de salvamento de informações durante a sessão neste estágio inicial. Isso significa que todas as entradas feitas serão perdidas se a página for recarregada. No entanto, essa limitação não impede o uso do sistema para fins temporais ou de teste. Clique em [Cash Flow App](https://cash-flow-app-eight.vercel.app/new) para visitar o aplicativo em ação.
+Currently, two official plugins are available:
 
-### Technologies
-- React
-- JavaScript
-- Vite
-- PrimeReact
-- PrimeFlex
-- jsPDF
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+## Expanding the ESLint configuration
+
+If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+
+- Configure the top-level `parserOptions` property like this:
+
+```js
+export default {
+  // other rules...
+  parserOptions: {
+    ecmaVersion: 'latest',
+    sourceType: 'module',
+    project: ['./tsconfig.json', './tsconfig.node.json', './tsconfig.app.json'],
+    tsconfigRootDir: __dirname,
+  },
+}
+```
+
+- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
+- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
+- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
