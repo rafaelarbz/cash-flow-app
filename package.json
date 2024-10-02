@@ -6,11 +6,9 @@
   "scripts": {
     "dev": "vite",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "build": "npm run build-ts && npm run build-vercel",
-    "build-ts": "tsc -b",
-    "build-vercel": "npx @vercel/ncc build",
-    "deploy-vercel": "npm run build && vercel --prod",
-    "preview": "npm run build && vite preview --host 0.0.0.0 --port 3000"
+    "build": "tsc -b && vite build",
+    "preview": "vite preview --host 0.0.0.0 --port 3000",
+    "deploy": "vercel --prod"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
